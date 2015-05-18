@@ -85,9 +85,8 @@ var endGame = function() {
 		$('.loser').hide();
 	})
 
-
 	$('#name').keydown(function(event) {
-		if (event.keyCode == 13) { 
+		if (event.keyCode === 13) { 
 			var textareaValue = $('#name').val();
 			$('.userName').append($('<li>' + textareaValue + '</li>'));
 			$('.userRound').append($('<li>' + Simon.round + '</li>'));
@@ -99,7 +98,6 @@ var endGame = function() {
 
 	$('.submit').click(function() {
 		var textareaValue = $('#name').val();
-		// $('.score').append($('<li>' + textareaValue + "  -  " + "Round: " + Simon.round  + '</li>'));
 		$('.userName').append($('<li>' + textareaValue + '</li>'));
 		$('.userRound').append($('<li>' + Simon.round + '</li>'));
 		window.setTimeout(function() {
