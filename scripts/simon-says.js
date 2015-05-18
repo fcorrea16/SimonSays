@@ -68,7 +68,7 @@ SimonSays.prototype.runSequence = function(sequence) {
 	if (i >= Simon.sequence.length) {
 		clearInterval(interval);
 	}
-	}, 600);
+	}, 1000);
 }
 
 $('.loser').hide();
@@ -78,22 +78,35 @@ var $nameScore = $('#name').val();
 var endGame = function() {
 	$('.loser').show("slow");
 	$('.loserRound').html(Simon.round);
+
 	$('.close').click(function(){
 		$('.loser').hide();
 	})
-	$('#name').click(function(){
-		$nameScore()
-	})
-	
-	$('.submit').click(function() {
-		$('.score').add(li);
-		$('.score').append($('#name').val())
-	})
-	// window.setTimeout(function(){
-	// 	$('.loser').hide("slow");
-	// }, 10000);
 
+	// $('#name').click(function(){
+	// 	$nameScore()
+	// })
+		
+
+	$('#name').keydown(function(event) {
+		if (event.keyCode == 13) { 
+			var textareaValue = $('#name').val();
+			$('.score').append($('<li>' +  textareaValue + " got to round: " + Simon.round + '</li>'));
+			window.setTimeout(function() {
+			$('.loser').hide("slow");
+		}, 1000);
+	}
+})
+
+	$('.submit').click(function() {
+		var textareaValue = $('#name').val();
+		$('.score').append($('<li>' +  textareaValue + " got to round: " + Simon.round + '</li>'));
+		window.setTimeout(function() {
+		$('.loser').hide("slow");
+		}, 1000);
+	})
 }
+
 
 // setting timer for each round. Stops if user loses.
 var counter = 31;
@@ -133,7 +146,7 @@ SimonSays.prototype.playRound = function(){
 SimonSays.prototype.check = function() {
 	if (this.playing === true) {
 		for (var i = 0; i < this.userSequence.length ; i++) {
-		 if (this.userSequence[i] === this.sequence[i] && this.userSequence.length === this.sequence.length ) {
+		 if (this.userSequence[i] === this.sequence[i] && this.userSequence.length === this.sequence.length && (this.userSequence[this.userSequence.length -1]) === (this.sequence[this.sequence.length -1])) {
 				console.log(this.userSequence);	
 				this.round += 1
 				$('.round').text(this.round);
