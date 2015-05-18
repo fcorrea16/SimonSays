@@ -13,7 +13,8 @@ You have 30 second to complete each round.
 Fernanda Correa at General Assembly WDI 2015.
 
 
-Game done with javascript, jquery, html5, and css3. Also, the css includes style to works on mobile devices.
+Game done with javascript, jquery, html5, and css3.
+Also, css includes styling for mobile devices.
 
 
 
