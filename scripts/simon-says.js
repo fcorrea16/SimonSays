@@ -4,7 +4,7 @@ console.log("connected to simon-says.js");
 var SimonSays = function SimonSays() {
 	this.sequence=[]; // simon sequence
 	this.userSequence=[]; // user sequence of when they click
-	this.round= 0; // game starts as round 0
+	this.round;// game starts as round 0
 	this.playing = false; // if playing is true it keeps playing, if false stops.
 };
 
@@ -68,13 +68,15 @@ SimonSays.prototype.runSequence = function(sequence) {
 	if (i >= Simon.sequence.length) {
 		clearInterval(interval);
 	}
-	}, 1000);
+	}, 700);
 }
 
+//  hiding loser screen
 $('.loser').hide();
+//textarea value on loser screen
 var $nameScore = $('#name').val();
 
-
+// if game ends show loser screen
 var endGame = function() {
 	$('.loser').show("slow");
 	$('.loserRound').html(Simon.round);
@@ -83,15 +85,12 @@ var endGame = function() {
 		$('.loser').hide();
 	})
 
-	// $('#name').click(function(){
-	// 	$nameScore()
-	// })
-		
 
 	$('#name').keydown(function(event) {
 		if (event.keyCode == 13) { 
 			var textareaValue = $('#name').val();
-			$('.score').append($('<li>' +  textareaValue + " got to round: " + Simon.round + '</li>'));
+			$('.userName').append($('<li>' + textareaValue + '</li>'));
+			$('.userRound').append($('<li>' + Simon.round + '</li>'));
 			window.setTimeout(function() {
 			$('.loser').hide("slow");
 		}, 1000);
@@ -100,7 +99,9 @@ var endGame = function() {
 
 	$('.submit').click(function() {
 		var textareaValue = $('#name').val();
-		$('.score').append($('<li>' +  textareaValue + " got to round: " + Simon.round + '</li>'));
+		// $('.score').append($('<li>' + textareaValue + "  -  " + "Round: " + Simon.round  + '</li>'));
+		$('.userName').append($('<li>' + textareaValue + '</li>'));
+		$('.userRound').append($('<li>' + Simon.round + '</li>'));
 		window.setTimeout(function() {
 		$('.loser').hide("slow");
 		}, 1000);
@@ -135,7 +136,10 @@ SimonSays.prototype.playRound = function(){
 		this.addColor();
 		window.clearInterval(countDown);
 		counter = 31;
-		this.runSequence();
+		window.setTimeout(function() {
+			Simon.runSequence();
+		}, 600);
+		
 		console.log(this.sequence);	
 }
 
@@ -158,10 +162,7 @@ SimonSays.prototype.check = function() {
 
 			} else {
 				endGame(); 
-				this.userSequence = [];
-				this.sequence = [];
 				Simon.playing = false;
-				Simon.round = 0;
 				$('.round').text(this.round);
 				window.clearInterval(countDown);
 				$('.timer').html('30');
