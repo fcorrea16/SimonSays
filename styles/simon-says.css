@@ -322,24 +322,3 @@ li {
 	background-image: url(close-button2.svg);
 	border: none;
 }
-
-
-
-
-/*#footer{
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	height: 55px;
-	width: 100%;
-	background-color: #C4C4C4;
-	text-align: center;
-	font-family: "Quicksand";
-	text-transform: uppercase;
-	font-weight: 400;
-	font-size: 13pt;
-	color: #E6E6E6;
-	border-top: solid 3px #737373;
-	padding-top: 0px;
-
-}*/

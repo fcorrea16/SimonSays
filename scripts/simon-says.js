@@ -1,10 +1,10 @@
-console.log("connected to simon-says.js");
+console.log('connected to simon-says.js');
 
 //creating function object
 var SimonSays = function SimonSays() {
-	this.sequence=[]; // simon sequence
-	this.userSequence=[]; // user sequence of when they click
-	this.round= 0; // game starts as round 0
+	this.sequence = []; // simon sequence
+	this.userSequence = []; // user sequence of when they click
+	this.round = 0; // game starts as round 0
 	this.playing = false; // if playing is true it keeps playing, if false stops.
 };
 
@@ -115,6 +115,8 @@ var countDown = function () {
 	}
 }
 
+
+
 // Play round adds color to sequence and lights up the sequence
 // runs timer each time we play new round
 SimonSays.prototype.playRound = function(){
@@ -122,7 +124,9 @@ SimonSays.prototype.playRound = function(){
 		this.addColor();
 		window.clearInterval(countDown);
 		counter = 31;
-		this.runSequence();
+		window.setTimeout(function() {
+			Simon.runSequence();
+		}, 300);
 		console.log(this.sequence);	
 }
 
