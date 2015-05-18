@@ -15,7 +15,8 @@
 	</div>
 
 	<h1>Simon Says</h1>
-	<h2>Select the lights in the same order that simon does.</h2>
+	<h2>Select the lights in the same order that simon does.
+	<br> You have 30 seconds to complete each round.</h2>
 
 	<div id="content">
 		<div id="pies">
@@ -30,10 +31,14 @@
 		<div id="sideNav">
 		
 			<div class="button">Start</div>
-			<div class="info">Round:</div>
-			<div class="round">0</div>
-			<div class="info">Timer:</div>
-			<div class="timer">30</div>
+			<div class="roundTime"> 
+				<div class="info">Round:</div>
+				<div class="round">0</div>
+			</div>
+			<div class="roundTime"> 
+				<div class="info">Timer:</div>
+				<div class="timer">30</div>
+			</div>
 			<br>
 		</div>
 
@@ -44,20 +49,24 @@
 				<h3>You Lose. </h3>
 				<h5>You got to round <span class="loserRound"> </span>.</h5>
 			</div>
-
 			<textarea id="name" placeholder="Your name"></textarea>
-
 			<div class="submit">Submit</div>
 			
-	</div>
+		</div>
 
-	</div>
 		<div class="score">
 			<h4>Score Board</h4>
-			<ul>
-				<li>Your name...</li>
-		</ul>
+			<div class="user">
+				<ul class="userInfo userName"> 
+					<li>Name</li>
+				</ul>
+				<ul class="userInfo userRound"> 
+					<li>Round</li>
+				</ul>
+			</div>
 		</div>
+
+	</div>
 	
 	<script src="scripts/jquery-2.1.4.js"></script>
 	<script type="text/javascript" src="scripts/simon-says.js"></script>

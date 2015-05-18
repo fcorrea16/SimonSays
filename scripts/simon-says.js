@@ -2,9 +2,9 @@ console.log('connected to simon-says.js');
 
 //creating function object
 var SimonSays = function SimonSays() {
-	this.sequence = []; // simon sequence
-	this.userSequence = []; // user sequence of when they click
-	this.round = 0; // game starts as round 0
+	this.sequence=[]; // simon sequence
+	this.userSequence=[]; // user sequence of when they click
+	this.round;// game starts as round 0
 	this.playing = false; // if playing is true it keeps playing, if false stops.
 };
 
@@ -68,32 +68,44 @@ SimonSays.prototype.runSequence = function(sequence) {
 	if (i >= Simon.sequence.length) {
 		clearInterval(interval);
 	}
-	}, 600);
+	}, 700);
 }
 
+//  hiding loser screen
 $('.loser').hide();
+//textarea value on loser screen
 var $nameScore = $('#name').val();
 
-
+// if game ends show loser screen
 var endGame = function() {
 	$('.loser').show("slow");
 	$('.loserRound').html(Simon.round);
+
 	$('.close').click(function(){
 		$('.loser').hide();
 	})
-	$('#name').click(function(){
-		$nameScore()
-	})
-	
-	$('.submit').click(function() {
-		$('.score').add(li);
-		$('.score').append($('#name').val())
-	})
-	// window.setTimeout(function(){
-	// 	$('.loser').hide("slow");
-	// }, 10000);
 
+	$('#name').keydown(function(event) {
+		if (event.keyCode === 13) { 
+			var textareaValue = $('#name').val();
+			$('.userName').append($('<li>' + textareaValue + '</li>'));
+			$('.userRound').append($('<li>' + Simon.round + '</li>'));
+			window.setTimeout(function() {
+			$('.loser').hide("slow");
+		}, 1000);
+	}
+})
+
+	$('.submit').click(function() {
+		var textareaValue = $('#name').val();
+		$('.userName').append($('<li>' + textareaValue + '</li>'));
+		$('.userRound').append($('<li>' + Simon.round + '</li>'));
+		window.setTimeout(function() {
+		$('.loser').hide("slow");
+		}, 1000);
+	})
 }
+
 
 // setting timer for each round. Stops if user loses.
 var counter = 31;
@@ -137,7 +149,7 @@ SimonSays.prototype.playRound = function(){
 SimonSays.prototype.check = function() {
 	if (this.playing === true) {
 		for (var i = 0; i < this.userSequence.length ; i++) {
-		 if (this.userSequence[i] === this.sequence[i] && this.userSequence.length === this.sequence.length ) {
+		 if (this.userSequence[i] === this.sequence[i] && this.userSequence.length === this.sequence.length && (this.userSequence[this.userSequence.length -1]) === (this.sequence[this.sequence.length -1])) {
 				console.log(this.userSequence);	
 				this.round += 1
 				$('.round').text(this.round);
@@ -149,10 +161,7 @@ SimonSays.prototype.check = function() {
 
 			} else {
 				endGame(); 
-				this.userSequence = [];
-				this.sequence = [];
 				Simon.playing = false;
-				Simon.round = 0;
 				$('.round').text(this.round);
 				window.clearInterval(countDown);
 				$('.timer').html('30');
@@ -189,6 +198,7 @@ $('.yellow').click(function(){
 	Simon.check();
 })
 
+window.setInterval(countDown, 1000);
 
 // click on start and game will start.  
 $('.button').click(function() {
@@ -197,7 +207,7 @@ $('.button').click(function() {
 	Simon.round = 0;
 	Simon.playing = true;
 	Simon.playRound();	
-	window.setInterval(countDown, 1000);
+	
 });
 
 

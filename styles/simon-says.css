@@ -89,6 +89,7 @@ h4 {
 	color: #5C5C5C;
 	margin: 0px;
 	padding: 0px;
+	margin-top: 15px;
 }
 
 h5 {
@@ -253,7 +254,7 @@ h5 {
 }
 
 .score {
-	margin-top: 30px;
+	margin-top: 20px;
 	clear: both;
 	height: 200px;
 	width: 100%;
@@ -273,11 +274,13 @@ ul {
 }
 
 li {
-	margin-top: 10px;
-	list-style-type: decimal;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	list-style-type: none;
 	font-family: "Quicksand";
 	font-weight: 400;
 	font-size: 14pt;
+	border-bottom: dashed 1px #E6E6E6;
 }
 
 #name {
@@ -322,3 +325,73 @@ li {
 	background-image: url(close-button2.svg);
 	border: none;
 }
+
+
+.user {
+	width: 422px;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: auto;
+/*	border-top: dashed 1px #E6E6E6;*/
+	margin-top: 10px;
+}
+
+.userInfo{
+	text-align: center;
+	float: left;
+	width: 200px;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+.userInfo.userName{
+	border-right: dashed 1px #E6E6E6;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 450px)  {
+	#pies {
+	float: none;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+	width: 500px;
+
+	}
+
+	#sideNav{
+	float:none;
+	width:80%;
+	height: 200px;
+	background-color: #E6E6E6;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 50px;
+	}
+
+	.score {
+	float:none;
+	height: 200px;
+	width: 100%;
+	border-top: dashed 1px #E6E6E6;
+	color: #595959
+	}
+
+	.roundTime {
+		float: left;
+		width: 50%;
+		padding-top: 30px;
+	}
+	
+
+	#content {
+		margin-top: 50px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 95%;
+		height: 600px;
+		margin-bottom: 10px;
+	}
+
+
+}
+
