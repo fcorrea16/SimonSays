@@ -198,6 +198,7 @@ $('.yellow').click(function(){
 	Simon.check();
 })
 
+window.setInterval(countDown, 1000);
 
 // click on start and game will start.  
 $('.button').click(function() {
@@ -206,7 +207,7 @@ $('.button').click(function() {
 	Simon.round = 0;
 	Simon.playing = true;
 	Simon.playRound();	
-	window.setInterval(countDown, 1000);
+	
 });
 
 
