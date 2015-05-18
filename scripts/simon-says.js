@@ -72,9 +72,8 @@ SimonSays.prototype.runSequence = function(sequence) {
 }
 
 $('.loser').hide();
-var $nameScore = function(){
-	$('#name').val();
-}
+var $nameScore = $('#name').val();
+
 
 var endGame = function() {
 	$('.loser').show("slow");
@@ -87,8 +86,8 @@ var endGame = function() {
 	})
 	
 	$('.submit').click(function() {
-		$('.board').add('li');
-		$('.board').append($nameScore())
+		$('.score').add(li);
+		$('.score').append($('#name').val())
 	})
 	// window.setTimeout(function(){
 	// 	$('.loser').hide("slow");
